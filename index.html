@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vyralx — Dark Motivation & Discipline</title>
+    <meta
+      name="description"
+      content="Vyralx is a dark-themed motivation brand focused on discipline, mindset, and silent self-improvement."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #08090d;
+        --bg-elevated: #11141c;
+        --card: #131722;
+        --text: #e8ebf5;
+        --muted: #98a1ba;
+        --accent: #79f2ff;
+        --accent-soft: rgba(121, 242, 255, 0.2);
+        --line: rgba(146, 156, 181, 0.2);
+        --glow: 0 0 24px rgba(121, 242, 255, 0.24);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: radial-gradient(circle at 15% 20%, rgba(121, 242, 255, 0.09), transparent 42%),
+          radial-gradient(circle at 80% 10%, rgba(185, 121, 255, 0.08), transparent 35%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+      }
+
+      .container {
+        width: min(1100px, 92vw);
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        margin-bottom: 0.7rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 6vw, 4rem);
+        font-weight: 800;
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        font-weight: 700;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(10px);
+        background: rgba(8, 9, 13, 0.7);
+        border-bottom: 1px solid var(--line);
+        z-index: 10;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.9rem 0;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .nav a {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+
+      .hero-inner {
+        max-width: 760px;
+        animation: fadeUp 0.9s ease-out;
+      }
+
+      .hero p {
+        margin: 1rem auto 1.8rem;
+        max-width: 620px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.82rem 1.3rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: linear-gradient(120deg, #79f2ff, #6f97ff 55%, #b879ff);
+        color: #0a0d16;
+        box-shadow: var(--glow);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-ghost {
+        border-color: var(--line);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--accent-soft);
+        box-shadow: var(--glow);
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .about-card,
+      .quote-card,
+      .reel-card,
+      .join-card {
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1.2rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-highlight {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text);
+      }
+
+      .quotes-grid,
+      .reels-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quote-card::before {
+        content: "\201C";
+        position: absolute;
+        top: -0.45rem;
+        right: 0.7rem;
+        font-size: 4rem;
+        color: rgba(121, 242, 255, 0.12);
+      }
+
+      .quote-text {
+        color: var(--text);
+        font-size: 1.04rem;
+        font-weight: 500;
+      }
+
+      .quote-tag {
+        display: inline-block;
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .reel-card iframe {
+        width: 100%;
+        min-height: 440px;
+        border: 0;
+        border-radius: 12px;
+      }
+
+      .join-card {
+        text-align: center;
+        padding: 2rem 1.3rem;
+      }
+
+      .socials {
+        margin-top: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        justify-content: center;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+        padding: 1.2rem 0 2rem;
+      }
+
+      .site-footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .site-footer p {
+        font-size: 0.9rem;
+      }
+
+      .animate {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .section {
+          padding: 6rem 0;
+        }
+
+        .about-grid {
+          grid-template-columns: 1.1fr 0.9fr;
+          align-items: stretch;
+        }
+
+        .quotes-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .reels-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top">Vyralx</a>
+        <a class="btn btn-ghost" href="https://instagram.com/vyralx.co" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="container hero-inner">
+          <p class="eyebrow">Dark Mindset • Discipline • Growth</p>
+          <h1>Master your mind. Build unshakable discipline.</h1>
+          <p>Silence the noise. Build the power within. Vyralx is the digital ritual for those committed to growth, focus, and quiet self-improvement.</p>
+          <a class="btn btn-primary" href="https://instagram.com/vyralx.co" target="_blank" rel="noopener noreferrer">Enter the Vyralx Feed</a>
+        </div>
+      </section>
+
+      <section class="section animate" id="about">
+        <div class="container grid about-grid">
+          <article class="about-card">
+            <p class="eyebrow">About Vyralx</p>
+            <h2>Mysterious energy. Relentless evolution.</h2>
+            <p style="margin-top: 1rem;">
+              Vyralx exists for creators, thinkers, and grinders who choose inner strength over external noise. Every post, quote, and reel is crafted to sharpen focus, deepen discipline, and push you toward your highest standard.
+            </p>
+          </article>
+          <article class="about-card about-highlight">
+            <h3>Philosophy</h3>
+            <p style="margin-top: 0.8rem;">
+              Real growth is quiet. Build habits that speak louder than words. Move in silence, stay consistent, and let your transformation become undeniable.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section animate" id="quotes">
+        <div class="container">
+          <p class="eyebrow">Dark Motivational Quotes</p>
+          <h2>Words to forge your mindset</h2>
+          <div class="grid quotes-grid" style="margin-top: 1.3rem;">
+            <article class="quote-card">
+              <p class="quote-text">Discipline is choosing what you want most over what you want now.</p>
+              <span class="quote-tag">Mindset</span>
+            </article>
+            <article class="quote-card">
+              <p class="quote-text">Stay silent. Let your consistency make the loudest statement.</p>
+              <span class="quote-tag">Execution</span>
+            </article>
+            <article class="quote-card">
+              <p class="quote-text">You don't need motivation every day. You need standards that don't break.</p>
+              <span class="quote-tag">Standards</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section animate" id="reels">
+        <div class="container">
+          <p class="eyebrow">Featured Reels</p>
+          <h2>Viral mindset content from Instagram</h2>
+          <p style="margin-top: 0.8rem;">Replace each reel URL with your latest performing content to keep this section fresh.</p>
+          <div class="grid reels-grid" style="margin-top: 1.2rem;">
+            <article class="reel-card">
+              <iframe
+                src="https://www.instagram.com/reel/DVsoC3djh6j/embed"
+                allowtransparency="true"
+                allowfullscreen="true"
+                title="Featured Vyralx Reel 1"
+              ></iframe>
+            </article>
+            <article class="reel-card">
+              <iframe
+                src="https://www.instagram.com/reel/DGyIZB8zr55/embed"
+                allowtransparency="true"
+                allowfullscreen="true"
+                title="Featured Vyralx Reel 2"
+              ></iframe>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section animate" id="join">
+        <div class="container">
+          <article class="join-card">
+            <p class="eyebrow">Join the Community</p>
+            <h2>Follow Vyralx and level up in silence.</h2>
+            <p style="margin-top: 0.8rem; max-width: 660px; margin-inline: auto;">
+              If you're building power through discipline, mindset, and deliberate action, this is your space. Connect, consume, and evolve.
+            </p>
+            <div class="socials">
+              <a class="btn btn-primary" href="https://instagram.com/vyralx.co" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a class="btn btn-ghost" href="https://instagram.com/vyralx.co" target="_blank" rel="noopener noreferrer">Reels</a>
+              <a class="btn btn-ghost" href="https://instagram.com/vyralx.co" target="_blank" rel="noopener noreferrer">DM Vyralx</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <a href="https://instagram.com/vyralx.co" target="_blank" rel="noopener noreferrer">@vyralx.co</a>
+        <p>© <span id="year"></span> Vyralx. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll(".animate").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
